@@ -1,8 +1,6 @@
 import React, {useState, Component} from 'react'
 import {Alert, Calendar, DatePicker, message, Typography} from 'antd';
-const { Title } = Typography;
 import axios from "axios";
-
 import moment from 'moment'
 import './App.css'
 
