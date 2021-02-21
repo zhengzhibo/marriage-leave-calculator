@@ -131,7 +131,7 @@ class App extends Component{
 
   render() {
     return <div className="App">
-      <DatePicker onChange={this.onChange.bind(this)}/>
+      <DatePicker inputReadOnly={true} onChange={this.onChange.bind(this)}/>
       <div style={{marginTop: 16}}>
         <Alert message={this.message.bind(this)()} ></Alert>
       </div>
