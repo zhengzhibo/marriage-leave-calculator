@@ -9,7 +9,6 @@ class App extends Component{
   getHoliday = (year) => {
     axios.get(`//timor.tech/api/holiday/year/${year}/`).then(({ data: {holiday} }) => {
       holiday.year = year;
-      debugger
       this.setState({holiday})
     }, (e) => {
       message.error('请求节假日API出错');
