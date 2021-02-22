@@ -27,7 +27,7 @@ class App extends Component{
     this.getHoliday(moment().year())
   }
 
-  onChange(date) {
+  onChange = (date) => {
     if (date && this.state.holiday.year != date.year()) {
       this.getHoliday(date.year())
     }
@@ -53,7 +53,7 @@ class App extends Component{
     }
   }
 
-  dateFullCellRender(day) {
+  dateFullCellRender = (day) => {
     const dayData = this.getDayData(day);
     return <div onClick={(e) => e.stopPropagation()}  className={`holiday-bar-container ${dayData.isNonWorkingDay ? 'is-holiday' : ''}`}>
       <div className="holiday-bar-title">
@@ -62,15 +62,15 @@ class App extends Component{
       {dayData.inHoliday &&
         <div className={`holiday-bar day-${dayData.diffDays}`}></div>
       }
-      { dayData ? <div className="day-name">{dayData.name}</div> : null}
+      { dayData && <div className="day-name">{dayData.name}</div>}
     </div>
   }
 
-  headerRender({value}) {
+  headerRender = ({value}) => {
     return <div className="calendar-header">{value.format('YYYY年M月')}</div>
   }
 
-  message() {
+  message = () => {
     if (!this.state.startDate) {
       return '请输入开始日期'
     }
@@ -131,17 +131,16 @@ class App extends Component{
 
   render() {
     return <div className="App">
-      <DatePicker inputReadOnly={true} onChange={this.onChange.bind(this)}/>
+      <DatePicker inputReadOnly={true} onChange={this.onChange}/>
       <div style={{marginTop: 16}}>
-        <Alert message={this.message.bind(this)()} ></Alert>
+        <Alert message={this.message()} ></Alert>
       </div>
       <div style={{marginTop: 16, padding: '0 5px', backgroundColor: '#fff'}}>
-        <Calendar value={this.state.startDate || moment()} dateFullCellRender={this.dateFullCellRender.bind(this)} headerRender={this.headerRender.bind(this)}></Calendar>
+        <Calendar value={this.state.startDate || moment()} dateFullCellRender={this.dateFullCellRender} headerRender={this.headerRender}></Calendar>
       </div>
     </div>;
   }
 
 }
 
-//共包含 个工作日， 个非工作日， 连休 天
 export default App
