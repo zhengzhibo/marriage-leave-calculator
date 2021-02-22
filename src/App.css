@@ -39,3 +39,14 @@
 .holiday-bar.day-15 {
   border-radius: 0 3px 3px 0;
 }
+
+@media screen and (max-width: 600px) {
+  .day-name {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .holiday-bar-container {
+    padding: 5px 0;
+  }
+}

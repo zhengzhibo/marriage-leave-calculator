@@ -59,10 +59,10 @@ class App extends Component{
       <div className="holiday-bar-title">
         <span className="date">{day.format('DD')}</span>
       </div>
-      { dayData.inHoliday
-        ? <div className={`holiday-bar day-${dayData.diffDays}`}></div>
-        : null}
-      { dayData ? <div>{dayData.name}</div> : null}
+      {dayData.inHoliday &&
+        <div className={`holiday-bar day-${dayData.diffDays}`}></div>
+      }
+      { dayData ? <div className="day-name">{dayData.name}</div> : null}
     </div>
   }
 
