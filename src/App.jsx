@@ -1,5 +1,5 @@
-import React, {useState, Component} from 'react'
-import {Alert, Calendar, DatePicker, message, Typography} from 'antd';
+import React, {Component} from 'react'
+import {Alert, Calendar, DatePicker, message} from 'antd';
 import axios from "axios";
 import moment from 'moment'
 import './App.css'
@@ -10,7 +10,7 @@ class App extends Component{
     axios.get(`//timor.tech/api/holiday/year/${year}/`).then(({ data: {holiday} }) => {
       holiday.year = year;
       this.setState({holiday})
-    }, (e) => {
+    }, () => {
       message.error('请求节假日API出错');
     })
   }
@@ -60,7 +60,7 @@ class App extends Component{
         <span className="date">{day.format('DD')}</span>
       </div>
       {dayData.inHoliday &&
-        <div className={`holiday-bar day-${dayData.diffDays}`}></div>
+        <div className={`holiday-bar day-${dayData.diffDays}`}/>
       }
       { dayData && <div className="day-name">{dayData.name}</div>}
     </div>
@@ -133,10 +133,10 @@ class App extends Component{
     return <div className="App">
       <DatePicker inputReadOnly={true} onChange={this.onChange}/>
       <div style={{marginTop: 16}}>
-        <Alert message={this.message()} ></Alert>
+        <Alert message={this.message()} />
       </div>
       <div style={{marginTop: 16, padding: '0 5px', backgroundColor: '#fff'}}>
-        <Calendar value={this.state.startDate || moment()} dateFullCellRender={this.dateFullCellRender} headerRender={this.headerRender}></Calendar>
+        <Calendar value={this.state.startDate || moment()} dateFullCellRender={this.dateFullCellRender} headerRender={this.headerRender}/>
       </div>
     </div>;
   }
